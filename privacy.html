@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="fi">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Niinku – Tietosuojakäytäntö</title>
+    <title>Niinku – Privacy Policy</title>
     <style>
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -14,31 +14,118 @@
         color: #111;
         background: #fafafa;
       }
+
       h1 {
         line-height: 1.2;
+        margin-bottom: 1.5rem;
       }
-      a {
+
+      a,
+      button {
         color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      button {
+        border: 0;
+        background: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      nav {
+        margin-top: 2rem;
+      }
+
+      nav a,
+      nav button {
+        margin-right: 1rem;
+      }
+
+      [data-lang="fi"] {
+        display: none;
+      }
+
+      body.fi [data-lang="en"] {
+        display: none;
+      }
+
+      body.fi [data-lang="fi"] {
+        display: block;
+      }
+
+      body.fi span[data-lang="fi"],
+      body.fi a[data-lang="fi"],
+      body.fi button[data-lang="fi"] {
+        display: inline;
       }
     </style>
   </head>
   <body>
-    <h1>Tietosuojakäytäntö</h1>
-    <p>
-      <strong>Niinku</strong> ei kerää, tallenna, jaa tai myy henkilötietoja.
-    </p>
-    <p>
-      Sovellus toimii paikallisesti laitteellasi. Emme käytä käyttäjätilejä,
-      analytiikkaa, mainontaa, seurantaa tai kolmannen osapuolen
-      seurantatyökaluja.
-    </p>
-    <p>
-      Sovelluksen asetukset, kuten widgetin ulkoasu ja lainasanojen näyttäminen,
-      tallennetaan vain laitteellesi.
-    </p>
-    <p>
-      Yhteys:
-      <a href="mailto:vire.creative@outlook.com">vire.creative@outlook.com</a>
-    </p>
+    <main>
+      <section data-lang="en">
+        <h1>Privacy Policy</h1>
+
+        <p>
+          <strong>Niinku</strong> does not collect, store, share, or sell
+          personal data.
+        </p>
+
+        <p>
+          The app works locally on your device. We do not use user accounts,
+          analytics, advertising, tracking, or third-party tracking tools.
+        </p>
+
+        <p>
+          App settings, such as widget appearance and whether loanwords are
+          shown, are stored only on your device.
+        </p>
+      </section>
+
+      <section data-lang="fi">
+        <h1>Tietosuojakäytäntö</h1>
+
+        <p>
+          <strong>Niinku</strong> ei kerää, tallenna, jaa tai myy
+          henkilötietoja.
+        </p>
+
+        <p>
+          Sovellus toimii paikallisesti laitteellasi. Emme käytä käyttäjätilejä,
+          analytiikkaa, mainontaa, seurantaa tai kolmannen osapuolen
+          seurantatyökaluja.
+        </p>
+
+        <p>
+          Sovelluksen asetukset, kuten widgetin ulkoasu ja lainasanojen
+          näyttäminen, tallennetaan vain laitteellesi.
+        </p>
+      </section>
+
+      <nav>
+        <a href="mailto:developer@virecreative.com" data-lang="en">Contact</a>
+        <a href="mailto:developer@virecreative.com" data-lang="fi">Yhteys</a>
+
+        <a href="/" data-lang="en">Vire Creative</a>
+        <a href="/" data-lang="fi">Vire Creative</a>
+
+        <button type="button" id="languageButton">Suomeksi</button>
+      </nav>
+    </main>
+
+    <script>
+      const button = document.getElementById("languageButton");
+
+      button.addEventListener("click", () => {
+        const isFinnish = document.body.classList.toggle("fi");
+        document.documentElement.lang = isFinnish ? "fi" : "en";
+        document.title = isFinnish
+          ? "Niinku – Tietosuojakäytäntö"
+          : "Niinku – Privacy Policy";
+        button.textContent = isFinnish ? "English" : "Suomeksi";
+      });
+    </script>
   </body>
 </html>
